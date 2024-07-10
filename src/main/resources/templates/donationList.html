@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Donation List</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <a style="float: right;" href="/donation-form">Enter a new Donation</a>
+    <h1>Donation List</h1>
+    <table style="border: 1px, solid, black">
+        <tr>
+            <th>Name</th>
+            <th>Donation Type</th>
+            <th>Donation Amount</th>
+            <th>Donation Quantity</th>
+            <th>Edit/Delete?</th>
+        </tr>
+        <tr>
+            <td>John Doe</td>
+            <td>Cash</td>
+            <td>$20.00</td>
+            <td></td>
+            <td><a href="/hello?name=John">Edit</a><br/><a href="/hello?name=John">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Sansa Stark</td>
+            <td>Clothing</td>
+            <td></td>
+            <td>5 items</td>
+            <td><a href="/hello?name=Sansa">Edit</a><br/><a href="/hello?name=Sansa">Delete</a></td>
+        </tr>
+    </table>
+</body>
+</html>

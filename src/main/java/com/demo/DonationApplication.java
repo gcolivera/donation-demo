@@ -14,6 +14,8 @@ public class DonationApplication {
 		SpringApplication.run(DonationApplication.class, args);
 	}
 
+	//Backend REST Services paths are defined here
+
 	@GetMapping("/hello")
 	public String hello(@RequestParam(value="name", defaultValue="World") String name) {
 		return String.format("Hello %s!", name);
