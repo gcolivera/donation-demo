@@ -41,8 +41,9 @@ There are two endpoints:
 For file storage, I am using a simple PostgresSQL database. I chose PostgresSQL because I already had that installed on my machine. THe SQL and drivers would need to be modified if using a different database. Since this is a single table, a database might not be entirely necessary, but I wanted to show that I have a bit of expreience with databases.
 
 The database consists of these tables:
-- Donors (FirstName, LastName, Id)
-- Donations (donorId, type, quantity, date, Id)
+- donor (first_name, last_name, id)
+- donation (donor_id, type_id, quantity, date, id)
+- donation_types (id, name)
 
 
 
