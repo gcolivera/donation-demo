@@ -1,28 +1,34 @@
 package com.demo;
 
+import java.sql.Date;
+
 public class Donation {
-    private String name;
+    private int id;
+    private String firstName;
+    private String lastName;
     private String quantity;
     private String type;
-    private String date;
+    private Date date;
 
     public Donation () {
     }
 
-    public Donation (String name, String quantity, String type, String date) {
-        this.name = name;
+    public Donation (String firstName, String lastName, String quantity, String type, Date date) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.quantity = quantity;
         this.type = type;
         this.date = date;
     }
 
     //getters and setters
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
     }
+
     public String getQuantity() {
         return quantity;
     }
@@ -35,11 +41,27 @@ public class Donation {
     public void setType(String type) {
         this.type = type;
     }
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 }

@@ -23,6 +23,7 @@ public class DonationFormController {
 	@PostMapping("/donation-form")
 	public String donationFormSubmit(@ModelAttribute Donation donation, Model model) {
 		model.addAttribute("donation", donation);
+		//TODO: MAKE A CALL TO WEBSERVICE TO CREATE A NEW DONATION
 		return "donationlist";
 	}
 

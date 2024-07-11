@@ -5,14 +5,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+    <h1>Enter New Donation</h1>
     <form action="#" method="POST" th:action="@{/donation-form}" th:object="${donation}">
-        <label>Donor's Name</label>
-        <input type="text" th:field="*{name}" required/><br/>
+        <label>First Name</label>
+        <input type="text" th:field="*{firstName}" required/><br/>
+        <label>Last Name</label>
+        <input type="text" th:field="*{lastName}" required/><br/>
         <label>Type of Donation</label>
         <select th:field="*{type}" required>
             <option value="money">Money</option>
-            <option value="food">Food</option>
+            <option value="canned food">Canned Food</option>
+            <option value="packaged food">Packaged Food</option>
             <option value="clothing">Clothing</option>
+            <option value="jewlery">Jewlery</option>
             <option value="other">Other</option>
         </select><br/>
         <label>Quantity or Amount</label>

@@ -3,32 +3,71 @@
 <head> 
     <title>Donation List</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        table {
+            border: 1px solid black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            font-weight: bold;
+            background-color: rgb(6, 17, 137);
+            color: white;
+            padding: 5px;
+        }
+        td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 5px;            
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchData();
+        });
+
+        function fetchData() {
+            fetch('/donations')
+                .then(response => response.json())
+                .then(data => {
+                    displayData(data);
+                })
+                .catch(error => {
+                    console.error('Error loading donation list: ', error);
+                    alert("Error!");
+                })
+        }
+
+        function displayData(data) {
+            const tableBody = document.querySelector('#donations tbody');
+            data.forEach(item => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).textContent = item.firstName;
+                row.insertCell(1).textContent = item.lastName;
+                row.insertCell(2).textContent = item.type;
+                row.insertCell(3).textContent = item.quantity;
+                row.insertCell(4).textContent = item.date;
+                row.insertCell(5).textContent = "Test";
+            });
+        }
+    </script>
 </head>
 <body>
     <a style="float: right;" href="/donation-form">Enter a new Donation</a>
     <h1>Donation List</h1>
-    <table style="border: 1px, solid, black">
-        <tr>
-            <th>Name</th>
+    <table id="donations">
+        <thead><tr>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>Donation Type</th>
-            <th>Donation Amount</th>
-            <th>Donation Quantity</th>
+            <th>Quantity</th>
+            <th>Date</th>
             <th>Edit/Delete?</th>
-        </tr>
-        <tr>
-            <td>John Doe</td>
-            <td>Cash</td>
-            <td>$20.00</td>
-            <td></td>
-            <td><a href="/hello?name=John">Edit</a><br/><a href="/hello?name=John">Delete</a></td>
-        </tr>
-        <tr>
-            <td>Sansa Stark</td>
-            <td>Clothing</td>
-            <td></td>
-            <td>5 items</td>
-            <td><a href="/hello?name=Sansa">Edit</a><br/><a href="/hello?name=Sansa">Delete</a></td>
-        </tr>
+        </tr></thead>
+        <tbody></tbody>
     </table>
 </body>
 </html>

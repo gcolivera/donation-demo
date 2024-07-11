@@ -1,2 +1,4 @@
-com/demo/GreetingController.class
+com/demo/database/PostgresHelper.class
+com/demo/DonationFormController.class
+com/demo/Donation.class
 com/demo/DonationApplication.class
