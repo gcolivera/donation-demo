@@ -8,9 +8,9 @@ public class DatabaseService {
     @Value("${app.db.url}")
     private String url;
     @Value("${app.db.username}")
-    private String user = "postgres";
+    private String user;
     @Value("${app.db.password}")
-    private String password = "niko23Olive";
+    private String password;
 
     public String getUrl() {
         return url;
