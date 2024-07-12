@@ -1,24 +1,25 @@
 package com.demo;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.database.DatabaseService;
 import com.demo.database.PostgresHelper;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
-
-
+/*
+ * @Author Gabrielle Olivera
+ * This controller defines several CRUD REST endpoints for reading and writing donations.
+ * These backend services will handle calling to the PostgresHelper to communicate with the database.
+ */
 @RestController
 public class DonationWebServiceController {
     @Autowired
@@ -27,6 +28,7 @@ public class DonationWebServiceController {
     private PostgresHelper pgHelper = null;
 
     //Backend REST Services paths are defined here
+
 	@GetMapping("/donations")
 	public ArrayList<Donation> getAllDonations() {
 		ArrayList<Donation> donations = new ArrayList<Donation>();
@@ -37,15 +39,6 @@ public class DonationWebServiceController {
 		} catch (Exception e) {
 			System.out.println("No donations found in database");
 		}
-		//If cannot connect to database use test donations
-		Donation joe = new Donation("Joe", "Black", "$200", "money", Date.valueOf("2024-07-01"));
-		Donation betty = new Donation("Betty", "White", "$200", "money", Date.valueOf("2024-06-01"));
-		Donation sue = new Donation("Sue", "Brown", "$200", "money", Date.valueOf("2023-12-24"));
-		Donation mary = new Donation("Mary", "Rose", "$200", "money", Date.valueOf("2024-05-01"));
-		donations.add(joe);
-		donations.add(betty);
-		donations.add(sue);
-		donations.add(mary);
 		return donations;
 	}
 
@@ -95,8 +88,11 @@ public class DonationWebServiceController {
         }
     }
 
-    //private method
+    //private methods below
     private void initializePgHelper() throws SQLException {
+        //This is so pgHelper is only initialized once.
+        //Initializing pgHelper only once allows for us to store some of the data in memory 
+        //and limit the amount of back and forth with the database
         if(pgHelper == null) {
             pgHelper = new PostgresHelper(databaseService);
         }

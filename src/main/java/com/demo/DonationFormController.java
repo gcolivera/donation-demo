@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+/*
+ * @Author Gabrielle Olivera
+ * This controller is the java code for the donationForm and donationList.
+ * This code is written such that if the User-Interface was put in it's own spring boot app
+ * separate from the REST Webservices code, there would be minimal changes needed.
+ */
+
 @Controller
 public class DonationFormController {
 	//TODO put this in properties

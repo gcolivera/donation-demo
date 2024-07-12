@@ -8,6 +8,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @AutoConfigureMockMvc
 class DonationApplicationTests {
 
+	/*
+	 * For the purposes of this project, I decided to skip writing unit tests.
+	 * If this application was to go to a production environment, unit tests should be writen.
+	 */
+
 	@Test
 	void contextLoads() {
 	}

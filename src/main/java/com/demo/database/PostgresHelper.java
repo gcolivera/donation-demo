@@ -11,7 +11,11 @@ import java.util.HashMap;
 import com.demo.Donation;
 
 /*
+ * @Author Gabrielle Olivera
  * This class handles connecting to and communicating with the database.
+ * The code is very specific to Postgresql JDBC. 
+ * If this application was switched to another type of database or datastore
+ * a new class can be written to replace this one to interact with that datastore.
  */
 
 public class PostgresHelper {
@@ -21,6 +25,8 @@ public class PostgresHelper {
     private HashMap<String, Integer> donationTypes;
     private HashMap<String, Integer> donorsMap;
     private HashMap<Integer, Donation> donationMap;
+
+    //This service is needed to keep database specific infomation in the application.properties file
     private DatabaseService databaseService;
 
     private Connection dbConnection;
