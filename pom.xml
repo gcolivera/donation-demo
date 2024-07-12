@@ -1,3 +1,6 @@
+# The pom xml in Spring-boot defines what libraries are needed for the application
+# This allows developers to pick and chose what pieces of the spring framework and other plugins they need for their application.
+# This way they can keep the application as small as needed.
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
