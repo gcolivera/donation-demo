@@ -55,8 +55,8 @@ The database consists of these tables:
 - src/main: Contains the java code for the application and webservice layer
 -   java/com/demo: Contains the main application shell, a controller for the UI form, and a controller for the backend REST services.
 -   java/com/demo/database: Contains classes that handle connecting to, querying, and writing to the database.
--   resources - html and application.properties can be found here
--     templates - the basic html is here for the donationList and donationForm pages. These are using tymeleaf templates which requires this file structure.
+-   resources: html and application.properties can be found here
+-   resources/templates: the basic html is here for the donationList and donationForm pages. These are using tymeleaf templates which requires this file structure.
 - src/test: Contains java unit tests.
 - target: Contains files that maven creates when it compiles, builds, cleans, and packages up the spring boot code into jar. This is also where the Snapshot jar files can be found.
 
