@@ -28,12 +28,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             fetchData();
         });
-
+        var donationData;
         function fetchData() {
             fetch('/donations')
                 .then(response => response.json())
                 .then(data => {
                     displayData(data);
+                    donationData = data;
                 })
                 .catch(error => {
                     console.error('Error loading donation list: ', error);
@@ -45,13 +46,32 @@
             const tableBody = document.querySelector('#donations tbody');
             data.forEach(item => {
                 const row = tableBody.insertRow();
-                row.insertCell(0).textContent = item.firstName;
-                row.insertCell(1).textContent = item.lastName;
-                row.insertCell(2).textContent = item.type;
-                row.insertCell(3).textContent = item.quantity;
-                row.insertCell(4).textContent = item.date;
-                row.insertCell(5).textContent = "Test";
+                    row.innerHTML = `
+                        <td>${item.firstName}</td>
+                        <td>${item.lastName}</td>
+                        <td>${item.type}</td>
+                        <td>${item.quantity}</td>
+                        <td>${item.date}</td>
+                        <td>
+                            <button onclick="editRow(${item.id})">Edit</button>
+                            <button onclick="deleteRow(${item.id})">Delete</button>
+                        </td>
+                    `;
             });
+        }
+
+        function editRow(id) {
+            window.location.href = "/donation-form?id=" + id;
+        }
+
+        function deleteRow(id) {
+            const response = fetch("/donation/"+id, 
+                {
+                    method: 'DELETE'
+                }
+            );
+            alert("Donation Deleted");
+            location.reload(); 
         }
     </script>
 </head>
@@ -65,7 +85,7 @@
             <th>Donation Type</th>
             <th>Quantity</th>
             <th>Date</th>
-            <th>Edit/Delete?</th>
+            <th>Edit/Delete</th>
         </tr></thead>
         <tbody></tbody>
     </table>

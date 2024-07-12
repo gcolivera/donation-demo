@@ -1,4 +1,5 @@
 com/demo/database/PostgresHelper.class
+com/demo/database/DatabaseService.class
 com/demo/DonationFormController.class
 com/demo/Donation.class
 com/demo/DonationApplication.class

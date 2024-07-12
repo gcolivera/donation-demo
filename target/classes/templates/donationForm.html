@@ -3,10 +3,16 @@
 <head> 
     <title>Donation Form</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            float: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Enter New Donation</h1>
     <form action="#" method="POST" th:action="@{/donation-form}" th:object="${donation}">
+        <input type="hidden" th:field="*{id}"/>
         <label>First Name</label>
         <input type="text" th:field="*{firstName}" required/><br/>
         <label>Last Name</label>
