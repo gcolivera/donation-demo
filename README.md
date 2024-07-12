@@ -60,7 +60,7 @@ The database consists of these tables:
 - src/test: Contains java unit tests.
 - target: Contains files that maven creates when it compiles, builds, cleans, and packages up the spring boot code into jar. This is also where the Snapshot jar files can be found.
 
-### Reference Documentation
+## Reference Documentation
 For further reference, please consider the following sections:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
