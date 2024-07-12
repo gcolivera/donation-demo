@@ -65,7 +65,6 @@ public class PostgresHelper {
                 donations.add(donation);
                 donationMap.put(donation.getId(), donation);
                 donorsMap.put(donation.getFirstName() + ' ' + donation.getLastName(), results.getInt("donor_id"));
-                donationTypes.put(donation.getType(), results.getInt("type_id"));
             }
             dbConnection.close();
         } catch (SQLException e) {
