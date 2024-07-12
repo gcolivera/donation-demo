@@ -37,14 +37,14 @@ The donation-list page gives the option to edit or delete a donation. The edit b
 The UI communicates to the API Layer as if they are living on different servers.
 This was specified in the instructions as well.
 There are two endpoints:
-- GET /donations : This will load a full list of donations. Returns a list of donation records.
-- GET /donation?id={id} : This will get a single donation by id. Returns the entire donation record.
-- POST /donation : This will create a new donation record. Variables: name, type, quantity, and date. Returns success or error.
-- PUT /donation : This will update the donation record. Variables: name, type, quantity, and date. Returns success or error.
-- DELETE /donation : This will delete the donation record. Variables: id. Returns success or error.
+- GET /donations : This will load a full list of donations limited to 100 records. Returns a list of donation records.
+- GET /donation/{id} : This will get a single donation by id. Returns the entire donation record.
+- POST /donation : This will create a new donation record. Request body is the donation object. Returns success or error.
+- PUT /donation : This will update the donation record. Request body is the donation object. Returns success or error.
+- DELETE /donation/{id} : This will delete the donation record. Variables: id. Returns success or error.
 
 # Database
-For file storage, I am using a simple PostgresSQL database. I chose PostgresSQL because I already had that installed on my machine. THe SQL and drivers would need to be modified if using a different database. Since this is a single table, a database might not be entirely necessary, but I wanted to show that I have a bit of expreience with databases.
+For file storage, this application uses a PostgresSQL database. I chose PostgresSQL because I already had that installed on my machine and I wanted to show off my knowledge of relational databases. The SQL and drivers would need to be modified if using a different database. Since this database is only a few tables, it might not be entirely necessary to use a database as the data storage method, but I wanted to show that I have a bit of expreience with databases.
 
 The database consists of these tables:
 - donor (first_name, last_name, id)
@@ -59,7 +59,6 @@ The database consists of these tables:
 -     templates - the basic html is here for the donationList and donationForm pages. These are using tymeleaf templates which requires this file structure.
 - src/test: Contains java unit tests.
 - target: Contains files that maven creates when it compiles, builds, cleans, and packages up the spring boot code into jar. This is also where the Snapshot jar files can be found.
-  
 
 
 
