@@ -3,7 +3,7 @@ Donation demo app created for Digital Aid Seattle Volunteer Opportunity.
 
 # Instructions for running
 Install
-- Java JDK 21
+- Java JDK 17
 - Maven 3.2
 - Postgresql
 
