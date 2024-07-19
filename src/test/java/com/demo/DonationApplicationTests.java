@@ -9,8 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 class DonationApplicationTests {
 
 	/*
-	 * For the purposes of this project, I decided to skip writing unit tests.
-	 * If this application was to go to a production environment, unit tests should be writen.
+	 *	@Author Gabrielle Olivera
+	 *  This is all boiler plate code.
+	 *  This is just a quick sanity test to make sure that the Applicaiton loads successfully.
 	 */
 
 	@Test

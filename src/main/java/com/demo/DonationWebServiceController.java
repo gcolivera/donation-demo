@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.database.DatabaseService;
@@ -28,7 +29,6 @@ public class DonationWebServiceController {
     private PostgresHelper pgHelper = null;
 
     //Backend REST Services paths are defined here
-
 	@GetMapping("/donations")
 	public ArrayList<Donation> getAllDonations() {
 		ArrayList<Donation> donations = new ArrayList<Donation>();
