@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 import com.demo.Donation;
 
@@ -19,6 +21,7 @@ import com.demo.Donation;
  */
 
 public class PostgresHelper {
+    private static Logger logger = Logger.getLogger(PostgresHelper.class.getName());
     private static final String LIMIT = "100";
     
     //Keeping some hashmaps in cache to avoid running queries
@@ -68,8 +71,7 @@ public class PostgresHelper {
             }
             dbConnection.close();
         } catch (SQLException e) {
-            System.out.println("There was an error connecting to the database.");
-            e.printStackTrace();
+            closeConnectionAndLogError("Could not pull donation list.", e);
             throw e;
         }
         return donations;
@@ -92,8 +94,7 @@ public class PostgresHelper {
             query.executeUpdate();
             dbConnection.close();
         } catch(SQLException e) {
-            System.out.println("Unable to create new donation.");
-            e.printStackTrace();
+            closeConnectionAndLogError("Could not create donation.", e);
             throw e;
         }
     }
@@ -116,8 +117,7 @@ public class PostgresHelper {
             dbConnection.close();
 
         } catch(SQLException e) {
-            System.out.println("There was an error connecting to the database.");
-            e.printStackTrace();
+            closeConnectionAndLogError("Could not get list of donation types from database.", e);
         }
         return donationTypes;
     }
@@ -141,13 +141,12 @@ public class PostgresHelper {
             query.executeUpdate();
             dbConnection.close();
         } catch(SQLException e) {
-            System.out.println("Unable to update donation.");
-            e.printStackTrace();
+            closeConnectionAndLogError("Could not update donation.", e);
             throw e;
         }
     }
 
-    public void deleteDontation(int id) throws SQLException {
+    public void deleteDonation(int id) throws SQLException {
         //TODO: Future enhancement to delete donor if there are no more donations
         try {
             openConnection();
@@ -159,8 +158,7 @@ public class PostgresHelper {
             query.executeUpdate();
             dbConnection.close();
         } catch(SQLException e) {
-            System.out.println("Unable to update donation.");
-            e.printStackTrace();
+            closeConnectionAndLogError("Could not delete donation.", e);
             throw e;
         }
     }
@@ -197,8 +195,7 @@ public class PostgresHelper {
             return donation;
 
         } catch(SQLException e) {
-            System.out.println("There was an error connecting to the database.");
-            e.printStackTrace();
+            closeConnectionAndLogError("Could not get donor from id.", e);
             throw e;
         }
     }
@@ -212,6 +209,20 @@ public class PostgresHelper {
             System.out.println("There was an error connecting to the database.");
             e.printStackTrace();
             throw e;
+        }
+    }
+
+    private void closeConnectionAndLogError(String customMessage, SQLException e) {
+        logger.log(Level.FINE, customMessage);
+        e.printStackTrace();
+
+        try {
+            if(dbConnection != null && !dbConnection.isClosed()) {
+                dbConnection.close();
+            }
+        } catch (SQLException e2) {
+            logger.log(Level.FINE, "Could not close connection.");
+            e2.printStackTrace();
         }
     }
 
@@ -233,8 +244,7 @@ public class PostgresHelper {
             id = findDonorId(firstName, lastName);
             dbConnection.close();
         } catch(SQLException e) {
-            System.out.println("Unable to create new donor.");
-            e.printStackTrace();
+            closeConnectionAndLogError("Could not create donor.", e);
             throw e;
         }
 
@@ -264,8 +274,7 @@ public class PostgresHelper {
             }
             dbConnection.close();
         } catch(SQLException e) {
-            System.out.println("There was an error connecting to the database.");
-            e.printStackTrace();
+            closeConnectionAndLogError("Could not find donor in database.", e);
         }
         return 0;
     }

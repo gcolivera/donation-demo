@@ -66,10 +66,10 @@ public class DonationWebServiceController {
     }
 
     @DeleteMapping("/donation/{id}")
-    public String deleteDontation(@PathVariable int id) {
+    public String deleteDonation(@PathVariable int id) {
         try {
             initializePgHelper();
-            pgHelper.deleteDontation(id);
+            pgHelper.deleteDonation(id);
         } catch (SQLException e) {
             return "Error";
         }
