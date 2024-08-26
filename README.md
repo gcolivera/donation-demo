@@ -26,7 +26,7 @@ The donation list should appear.
 This is a very simple two-page user-interface. It uses Tymeleaf templates which was an easy way to create a quick front-end for a Spring-boot application without the need to tie in a more robust UI framework.
 The instructions said to keep the UI very simple, so that's why it isn't very intutive or pretty.
 
-THe UI has two pages:
+The UI has two pages:
 - The home page: /(root)
 - The donation form: /donation-form
   
